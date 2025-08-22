@@ -31,7 +31,7 @@ h1 {
 }
 
 p {
-  font-size: clamp(0.7rem, 3vw, 1rem);
+  font-size: clamp(0.85rem, 3vw, 1rem);
 }
 
 body {
@@ -49,9 +49,10 @@ body {
   ); 
   */
   background: #001124;
-  background-image: url(https://github.com/user-attachments/assets/47953c98-49f4-4a40-8b2f-36543a0dd1a3);
+  background-image: url(images/bg-02.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-blend-mode: soft-light;
 }
 
 main {
@@ -119,25 +120,7 @@ main:hover::before {
     0 1px 0 0 rgba(255, 255, 255, 0.6) inset, 0 4px 16px rgba(0, 0, 0, 0.1);
   z-index: 10;
   color: var(--light-clr);
-  overflow-y: auto;
   padding: 30px 30px 10px;
-}
-
-.content::-webkit-scrollbar {
-  width: 7px;
-}
-
-.content::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 0.3rem var(--scrollbar-track);
-  border-radius: 40px;
-  margin: 18px 0;
-}
-
-.content::-webkit-scrollbar-thumb {
-  box-shadow: inset 0 0 0.5rem var(--scrollbar-thumb);
-  background-color: var(--primary-clr);
-  outline: none;
-  border-radius: 40px;
 }
 
 /** PLAYLIST */
@@ -189,6 +172,29 @@ main:hover::before {
   width: 100%;
 }
 
+.playlist-Scroll {
+  max-height: calc(100vh - 215px);
+  overflow-y: auto;
+  padding: 0 30px 0 0;
+}
+
+.playlist-Scroll::-webkit-scrollbar {
+  width: 7px;
+}
+
+.playlist-Scroll::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0.3rem var(--scrollbar-track);
+  border-radius: 40px;
+  margin: 18px 0;
+}
+
+.playlist-Scroll::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0.5rem var(--scrollbar-thumb);
+  background-color: var(--primary-clr);
+  outline: none;
+  border-radius: 40px;
+}
+
 .playlist-item {
   display: grid;
   grid-template-columns: 15% 65% 15% 5%;
@@ -218,6 +224,11 @@ main:hover::before {
 .playlist-item .song p:nth-child(2) {
   font-weight: 300;
   opacity: 0.5;
+  width: 90%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }
 
 .playlist-item i {
@@ -235,7 +246,7 @@ main:hover::before {
 .player {
   position: sticky;
   left: 0;
-  bottom: 0;
+  bottom: 15px;
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 10px;
@@ -334,14 +345,12 @@ main:hover::before {
   -webkit-appearance: none;
   width: 90%;
   height: 5px;
-  background: linear-gradient(
-    90deg,
-    var(--light-clr),
-    var(--secondary-clr),
-    var(--primary-clr),
-    var(--secondary-clr),
-    var(--light-clr)
-  );
+  background: linear-gradient(90deg,
+      var(--light-clr),
+      var(--secondary-clr),
+      var(--primary-clr),
+      var(--secondary-clr),
+      var(--light-clr));
   border-radius: 4px;
   margin: 12px 0 16px;
   cursor: pointer;
@@ -358,7 +367,7 @@ main:hover::before {
 
 /** Media Queries */
 
-@media (max-width: 1300px) {
+@media (max-width: 1366px) {
   main {
     width: 90%;
   }
@@ -374,53 +383,78 @@ main:hover::before {
   }
 
   .swiper {
-    width: 240px;
+    width: 350px;
   }
 
-  .slider-playlist {
-    grid-template-columns: 50% 50%;
-  }
-}
-
-@media (max-width: 900px) {
-  .content {
-    padding: 30px 40px 20px;
-    overflow-x: hidden;
+  .playlist {
+    margin: 40px 0 0;
   }
 
   .slider-playlist {
     grid-template-columns: 100%;
   }
 
+  .playlist-Scroll {
+    max-height: calc(100vh - 560px);
+    padding: 0 25px 120px 0;
+  }
+
+  .player {
+    bottom: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    padding: 30px 25px 20px;
+    overflow: hidden;
+  }
+
+  .playlist {
+    margin: 0;
+  }
+
   .swiper {
+    width: 270px;
     margin: 30px auto 50px;
   }
 
   .player {
-    width: 110%;
+    left: -15px;
+    width: calc(100% + 30px);
   }
 
   #volume-range {
-    width: 50px;
+    width: 80px;
   }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 767px) {
   .content {
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   .swiper {
-    width: 220px;
-    margin: 20px auto 35px;
+    width: 200px;
+    margin: 0 auto 35px;
+  }
+
+  .playlist-Scroll {
+    max-height: calc(100vh - 415px);
+    padding: 0 15px 120px 0;
+  }
+
+  .playlist-Scroll::-webkit-scrollbar {
+    width: 4px;
   }
 
   .playlist-item {
     margin-bottom: 10px;
   }
 
-  .player {
-    width: 115%;
+  .playlist-item {
+    display: grid;
+    grid-template-columns: 20% 60% 15% 5%;
   }
 
   .controls {
@@ -441,8 +475,8 @@ main:hover::before {
   }
 
   #volume-range {
-    left: 20px;
+    left: 25px;
     top: 6px;
-    width: 40px;
+    width: 50px;
   }
 }

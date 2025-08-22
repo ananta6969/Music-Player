@@ -22,6 +22,13 @@ const songs = [
   "./dist/songs/STFU.mp3",
   "./dist/songs/Azul-Guru-randhawa.mp3",
   "./dist/songs/When-And-Where.mp3",
+  "./dist/songs/Lock-Sidhu-Moose .mp3",
+  "./dist/songs/So-High.mp3",
+  "./dist/songs/Moosedrilla.mp3",
+  "./dist/songs/On-Top.mp3",
+  "./dist/songs/52-Bars.mp3",
+  "./dist/songs/Same-Beef.mp3",
+  "./dist/songs/Winning-Speech.mp3",
 ];
 
 var swiper = new Swiper(".swiper", {
