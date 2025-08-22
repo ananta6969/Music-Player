@@ -29,6 +29,7 @@ const songs = [
   "./dist/songs/52-Bars.mp3",
   "./dist/songs/Same-Beef.mp3",
   "./dist/songs/Winning-Speech.mp3",
+  "./dist/songs/At-Peace.mp3",
 ];
 
 var swiper = new Swiper(".swiper", {
